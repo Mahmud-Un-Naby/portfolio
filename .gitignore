@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+test-results/
+playwright-report/
+CONTENT.md
+LOCAL_NOTES.md
+.deployment.json
+.agents/
+.codex/
