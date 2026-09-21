@@ -7,3 +7,5 @@ LOCAL_NOTES.md
 .deployment.json
 .agents/
 .codex/
+# Preserve full-resolution photos and unused portrait variants locally.
+assets/photos/*.png

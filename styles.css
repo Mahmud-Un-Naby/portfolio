@@ -53,3 +53,22 @@ article.project-card:hover .chat-window{transform:rotate(-4deg)}
 .project-details li+li{margin-top:10px}
 .project-details strong{color:var(--ink);font-weight:550}
 @media(max-width:760px){.oj-project .project-visual{height:290px;min-height:0}.project-details ul{font-size:13px}}
+
+/* Personal photos: full originals stay local; the site serves lighter WebP copies. */
+.contest-history{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:38px;align-items:start}
+.contest-memory{margin:32px 0 0}
+.contest-memory a{display:block;border-radius:6px;overflow:hidden}
+.contest-memory img{display:block;width:100%;height:auto}
+.contest-memory figcaption{font-size:12px;line-height:1.7;margin-top:15px}
+.contest-memory .eyebrow{font-size:8px;letter-spacing:1.2px;margin-bottom:6px}
+.photo-hint{display:block;color:var(--muted);font-size:10px;margin-top:6px}
+.about-portrait{margin:28px 0 0;max-width:240px}
+.about-portrait img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid #d0d7c6}
+.about-copy{align-self:center}
+@media(max-width:1000px){
+  .contest-history{grid-template-columns:minmax(0,1fr);gap:25px}
+  .contest-memory{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center;gap:25px;margin-top:0}
+  .contest-memory figcaption{margin-top:0}
+}
+@media(max-width:760px){.about-portrait{max-width:220px}}
+@media(max-width:480px){.contest-memory{grid-template-columns:120px minmax(0,1fr);gap:18px}}
