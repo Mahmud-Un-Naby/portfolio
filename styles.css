@@ -91,3 +91,12 @@ article.project-card:hover .chat-window{transform:rotate(-4deg)}
 .resume-browser-link a:hover{color:var(--accent)}
 @media(max-width:1050px){.contest-grid{grid-template-columns:1fr}.contest-highlight{padding:24px}.site-header nav{gap:18px;font-size:11px}}
 @media(max-width:760px){.skill-groups{grid-template-columns:1fr}.contact-details{flex-direction:column;gap:15px}.contact-actions{margin-top:4px}.skill-group{padding:22px}.hero .eyebrow{font-size:6.5px}}
+
+.community{padding-bottom:0}
+.community-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.community-card{padding:28px;border:1px solid var(--line);border-radius:6px;background:#eeefe7}
+.community-card h3{font-size:22px;overflow-wrap:anywhere}
+.community-card p{font-size:13px;line-height:1.8;color:var(--muted);margin:12px 0 0}
+.community-card p.community-role{font-size:10px;letter-spacing:1px;color:var(--ink);margin:0 0 14px}
+.community-card .experience-timing{font-size:11px;color:var(--ink)}
+@media(max-width:760px){.community-grid{grid-template-columns:1fr}.community-card{padding:24px}}

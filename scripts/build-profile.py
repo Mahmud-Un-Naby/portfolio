@@ -27,18 +27,31 @@ for project in p['projects']:
     project_lines += ''.join(f'<li>{e(bullet)}</li>' for bullet in project['bullets'])
     project_lines += f'</ul><p class="project-note">{e(project["status"])} · {link(links["portfolio"] + "#" + project["id"] + "-title", "Project overview")}</p></article>'
 contest_lines = ''
+iupc_results = []
 for result in p['achievements']:
+    if result['contest'].endswith(' IUPC'):
+        iupc_results.append(f'{e(result["place"])} — {e(result["contest"].removesuffix(" IUPC"))} {e(result["year"])}')
+        continue
     name = f'{result.get("organizer", "")} {result["contest"]}'.strip()
     label = f'{name} {result["year"]}'
     title = link(result['url'], label) if result.get('url') else e(label)
     team = f' — Team {e(result["team"])}' if result.get('team') else ''
     contest_lines += f'<li><strong>{e(result["place"])} place</strong> — {title}{team}.</li>'
+if iupc_results:
+    contest_lines += f'<li><strong>{link(links["portfolio"] + "#contests", "IUPC team placements")}</strong>: {"; ".join(iupc_results)}.</li>'
 experience = ''
+experience_cards = []
 if p.get('experience'):
     entries = []
     for item in p['experience']:
-        entries.append(f'<article><h3>{e(item["role"])} · {e(item["organization"])}</h3><p>{e(item.get("dates", ""))}</p><ul>' + ''.join(f'<li>{e(b)}</li>' for b in item.get('bullets', [])) + '</ul></article>')
-    experience = '<section><h2>Experience</h2>' + ''.join(entries) + '</section>'
+        organization = link(item['url'], item['organization']) if item.get('url') else e(item['organization'])
+        timing = ' · '.join(e(value) for value in (item.get('dates'), item.get('duration')) if value)
+        timing_html = f'<p class="experience-timing">{timing}</p>' if timing else ''
+        bullets = '<ul>' + ''.join(f'<li>{e(b)}</li>' for b in item['bullets']) + '</ul>' if item.get('bullets') else ''
+        entries.append(f'<article class="resume-experience"><h3>{e(item["role"])} · {organization}</h3>{timing_html}{bullets}</article>')
+        paragraphs = ''.join(f'<p>{e(b)}</p>' for b in item.get('bullets', []))
+        experience_cards.append(f'<article class="community-card"><p class="community-role">{e(item["role"])}</p><h3>{organization}</h3>{timing_html}{paragraphs}</article>')
+    experience = '<section><h2>Teaching &amp; Leadership</h2>' + ''.join(entries) + '</section>'
 ed = p['education']
 resume = f'''<!doctype html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Résumé of {e(p['name'])}, competitive programmer and full-stack developer."><title>{e(p['name'])} — Résumé</title><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./resume.css"></head>
@@ -47,8 +60,8 @@ resume = f'''<!doctype html>
 <section><h2>Profile</h2><p>{e(p['summary'])}</p></section>
 <section><h2>Education</h2><h3>{e(ed['university'])}</h3><p>{e(ed['degree'])}<br>{e(ed['year'])} · Expected graduation: {e(ed['expected_graduation'])}</p></section>
 <section class="resume-skills"><h2>Technical Skills</h2>{skill_lines}</section>
-{experience}
 <section><h2>Projects</h2>{project_lines}</section>
+{experience}
 <section><h2>Competitive Programming &amp; Achievements</h2><p class="participation">{e(p['icpc_participations'])}-time ICPC Dhaka Regional participant · {link(links['codeforces'], 'Mahmud_Saikat on Codeforces')}</p><ul class="achievements">{contest_lines}</ul></section>
 </main></body></html>
 '''
@@ -62,12 +75,13 @@ for result in p['achievements']:
     name = link(result['url'], title) if result.get('url') else e(title)
     results += f'<tr><th scope="row">{name}</th><td>{e(result["year"])}</td><td>{e(result.get("team") or "Individual")}</td><td><span class="placement">{e(result["place"])}</span></td></tr>'
 results += '</tbody>'
-contact = f'''<section id="contact" class="contact wrap section-space" aria-labelledby="contact-title"><p class="eyebrow"><span class="status-dot"></span> 05 / GET IN TOUCH</p><h2 id="contact-title">Let’s build<br><em>something useful.</em><span class="contact-star" aria-hidden="true">✳</span></h2><div class="contact-bottom"><div><p>For software engineering opportunities and project conversations.</p><div class="contact-details">{email}{phone}{link(links['linkedin'], 'LinkedIn ↗', ' target="_blank" rel="noopener noreferrer"')}</div></div><div class="contact-actions">{link('mailto:' + p['email'], 'Send me an email ↗', ' class="button button-dark"')}{link('./assets/documents/Mahmud-Un-Naby-Resume.pdf', 'Download résumé ↓', ' class="text-link" download')}</div></div><p class="resume-browser-link">{link('./resume.html', 'Read my résumé online ↗')}</p></section>'''
+community = f'''<section id="community" class="community wrap section-space" aria-labelledby="community-title"><div class="section-heading"><div><p class="eyebrow">05 / TEACHING &amp; LEADERSHIP</p><h2 id="community-title">Learning.<br>And <em>passing it on.</em></h2></div></div><div class="community-grid">{''.join(experience_cards)}</div></section>''' if experience_cards else ''
+contact = f'''<section id="contact" class="contact wrap section-space" aria-labelledby="contact-title"><p class="eyebrow"><span class="status-dot"></span> 06 / GET IN TOUCH</p><h2 id="contact-title">Let’s build<br><em>something useful.</em><span class="contact-star" aria-hidden="true">✳</span></h2><div class="contact-bottom"><div><p>For software engineering opportunities and project conversations.</p><div class="contact-details">{email}{phone}{link(links['linkedin'], 'LinkedIn ↗', ' target="_blank" rel="noopener noreferrer"')}</div></div><div class="contact-actions">{link('mailto:' + p['email'], 'Send me an email ↗', ' class="button button-dark"')}{link('./assets/documents/Mahmud-Un-Naby-Resume.pdf', 'Download résumé ↓', ' class="text-link" download')}</div></div><p class="resume-browser-link">{link('./resume.html', 'Read my résumé online ↗')}</p></section>'''
 portfolio = (ROOT / 'index.html').read_text()
-for key, content in [('skills',skills),('results',results),('contact',contact)]:
+for key, content in [('skills',skills),('results',results),('experience',community),('contact',contact)]:
     pattern = rf'(<!-- profile:{key}:start -->).*?(<!-- profile:{key}:end -->)'
     portfolio, count = re.subn(pattern, lambda m: m[1] + '\n' + content + '\n    ' + m[2], portfolio, flags=re.S)
     if count != 1:
         raise RuntimeError(f'Expected one {key} section, found {count}')
 (ROOT / 'index.html').write_text(portfolio)
-print('Built resume.html and shared portfolio skills, contacts, and contest results.')
+print('Built resume.html and shared portfolio skills, teaching/leadership, contacts, and contest results.')

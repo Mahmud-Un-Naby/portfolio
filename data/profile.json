@@ -15,7 +15,7 @@
     "year": "Fourth year",
     "expected_graduation": "2027"
   },
-  "summary": "Fourth-year Computer Science and Engineering student with project experience in full-stack web development, real-time applications, and mathematical answer judging. Two-time ICPC Dhaka Regional participant; 7th place in the 2025 SRBD Code Contest.",
+  "summary": "Fourth-year CSE student building full-stack web and real-time applications. Two-time ICPC Dhaka Regional participant, 7th in the 2025 SRBD Code Contest, and a peer instructor in competitive programming.",
   "skills": [
     {
       "category": "Programming",
@@ -137,6 +137,29 @@
     }
   ],
   "icpc_participations": 2,
-  "experience": [],
+  "experience": [
+    {
+      "id": "cp-teaching",
+      "role": "Competitive Programming Instructor (Peer Teaching)",
+      "organization": "MBSTU university community",
+      "dates": null,
+      "duration": null,
+      "url": null,
+      "bullets": [
+        "Taught competitive programming to multiple batches of junior students through regular and camp classes in the university’s senior-to-junior teaching tradition."
+      ]
+    },
+    {
+      "id": "al-techemist",
+      "role": "Co-founder",
+      "organization": "AL-Techemist",
+      "dates": null,
+      "duration": null,
+      "url": null,
+      "bullets": [
+        "Co-founded a platform offering free online programming classes."
+      ]
+    }
+  ],
   "resume_target": "Software engineering / full-stack roles"
 }
