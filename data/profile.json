@@ -1,0 +1,142 @@
+{
+  "name": "Mahmud Un Naby",
+  "headline": "Competitive Programmer & Full-Stack Developer",
+  "email": "mahmudsaikat30@gmail.com",
+  "phone": "+8801786426712",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/mahmud-un-naby-75342b360/",
+    "github": "https://github.com/Mahmud-Un-Naby",
+    "codeforces": "https://codeforces.com/profile/Mahmud_Saikat",
+    "portfolio": "https://mahmud-un-naby.github.io/portfolio/"
+  },
+  "education": {
+    "university": "Mawlana Bhashani Science and Technology University",
+    "degree": "BSc Engineering in Computer Science and Engineering",
+    "year": "Fourth year",
+    "expected_graduation": "2027"
+  },
+  "summary": "Fourth-year Computer Science and Engineering student with project experience in full-stack web development, real-time applications, and mathematical answer judging. Two-time ICPC Dhaka Regional participant; 7th place in the 2025 SRBD Code Contest.",
+  "skills": [
+    {
+      "category": "Programming",
+      "items": [
+        "C++",
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "Dart",
+        "Data structures & algorithms"
+      ]
+    },
+    {
+      "category": "Frontend",
+      "items": [
+        "React",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "Vite"
+      ]
+    },
+    {
+      "category": "Backend & data",
+      "items": [
+        "Node.js",
+        "Express",
+        "REST APIs",
+        "FastAPI",
+        "PostgreSQL",
+        "Prisma",
+        "Redis",
+        "Supabase"
+      ]
+    },
+    {
+      "category": "Mobile & integration",
+      "items": [
+        "Flutter",
+        "Capacitor",
+        "Socket.IO",
+        "JWT / OAuth",
+        "Git & GitHub"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "failureoj",
+      "name": "FailureOJ",
+      "role": "Solo project",
+      "status": "Temporarily offline; hosting being restored",
+      "dates": null,
+      "live_url": null,
+      "stack": "React, TypeScript, Express, PostgreSQL, Prisma, Python, FastAPI, SymPy, Redis",
+      "bullets": [
+        "Built a bilingual math and science platform with answer submissions, notebook-image uploads, contests, standings, ratings, and learning resources.",
+        "Implemented a separate Python/FastAPI judge using SymPy for equivalent numeric expressions and tolerance-based answer checking.",
+        "Integrated a Redis-backed retry queue and Socket.IO verdict updates; configured an Android build with Capacitor."
+      ]
+    },
+    {
+      "id": "failurechat",
+      "name": "FailureChat",
+      "role": "Personal project",
+      "status": "Development paused",
+      "dates": null,
+      "live_url": null,
+      "stack": "Flutter, Dart, Supabase, PostgreSQL",
+      "bullets": [
+        "Developed a real-time messaging app with ephemeral messages, group conversations, and editable per-conversation identities.",
+        "Integrated Supabase authentication, database access, and real-time updates in a Flutter application."
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "contest": "SRBD Code Contest",
+      "organizer": "Samsung",
+      "year": 2025,
+      "place": "7th",
+      "team": null,
+      "url": null
+    },
+    {
+      "contest": "ICPC Dhaka Regional",
+      "year": 2026,
+      "place": "30th",
+      "team": "MBSTU_UdoMada",
+      "url": null
+    },
+    {
+      "contest": "IUT IUPC",
+      "year": 2026,
+      "place": "13th",
+      "team": "MBSTU_Vangachora",
+      "url": null
+    },
+    {
+      "contest": "SUST IUPC",
+      "year": 2026,
+      "place": "20th",
+      "team": "MBSTU_Vangachora",
+      "url": null
+    },
+    {
+      "contest": "CUET IUPC",
+      "year": 2025,
+      "place": "12th",
+      "team": "MBSTU_UdoMada",
+      "url": null
+    },
+    {
+      "contest": "UIU IUPC",
+      "year": 2025,
+      "place": "17th",
+      "team": "MBSTU_Zero_Index_Heroes",
+      "url": null
+    }
+  ],
+  "icpc_participations": 2,
+  "experience": [],
+  "resume_target": "Software engineering / full-stack roles"
+}
